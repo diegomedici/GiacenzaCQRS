@@ -56,7 +56,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Giacenza.feature</DependentUpon>
     </Compile>
-    <Compile Include="Integration\Giacenza.cs" />
     <Compile Include="Integration\GiacenzaRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Unit\GiacenzaTests.cs" />

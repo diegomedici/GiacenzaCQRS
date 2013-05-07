@@ -57,6 +57,7 @@
       <DependentUpon>Giacenza.feature</DependentUpon>
     </Compile>
     <Compile Include="Integration\GiacenzaRepositoryTests.cs" />
+    <Compile Include="Unit\Projections\GiacenzaProjectionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Unit\GiacenzaTests.cs" />
   </ItemGroup>

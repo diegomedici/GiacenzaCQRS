@@ -52,7 +52,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Giacenza.cs" />
+    <Compile Include="Events\GiacenzaCaricata.cs" />
     <Compile Include="Events\GiacenzaCreated.cs" />
+    <Compile Include="Events\GiacenzaScaricata.cs" />
+    <Compile Include="Projections\GiacenzaProjection.cs" />
+    <Compile Include="ReadModels\GiacenzaReadModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\GiacenzaRepository.cs" />
   </ItemGroup>

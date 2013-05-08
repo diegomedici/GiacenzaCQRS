@@ -2,15 +2,22 @@ using System;
 
 namespace GiacenzaCQRS.Core.Events
 {
-    public class GiacenzaScaricata
+    [Serializable]
+    public class GiacenzaScaricata : IMessage
     {
         public Guid Id { get; private set; }
         public int Quantita { get; private set; }
+        public string Minsan { get; private set; }
 
-        public GiacenzaScaricata(Guid id, int quantita)
+        public GiacenzaScaricata(string minsan, int quantita)
         {
-            Id = id;
             Quantita = quantita;
+            Minsan = minsan;
+        }
+
+        public void Process<TView>(TView view) where TView : IGiacenzaProjection
+        {
+            view.When(this);
         }
     }
 }

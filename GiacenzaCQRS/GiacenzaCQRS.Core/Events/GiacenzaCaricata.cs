@@ -2,15 +2,28 @@ using System;
 
 namespace GiacenzaCQRS.Core.Events
 {
-    public class GiacenzaCaricata
+    [Serializable]
+    public class GiacenzaCaricata : IMessage
     {
         public int Quantita { get; private set; }
         public Guid Id { get; private set; }
 
-        public GiacenzaCaricata(Guid id, int quantita)
+        public string Minsan { get; private set; }
+
+        public GiacenzaCaricata(string minsan, int quantita)
         {
-            Id = id;
+            Minsan = minsan;
             Quantita = quantita;
+        }
+
+        //public void Process(IProjection projection)
+        //{
+        //    projection.When(this);
+        //}
+
+        public void Process<TView>(TView view) where TView : IGiacenzaProjection
+        {
+            view.When(this);
         }
     }
 }

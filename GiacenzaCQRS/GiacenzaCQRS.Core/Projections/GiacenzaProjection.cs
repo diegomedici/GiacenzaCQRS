@@ -2,44 +2,51 @@
 using System.Collections.Generic;
 using GiacenzaCQRS.Core.Events;
 using GiacenzaCQRS.Core.ReadModels;
+using GiacenzaCQRS.Core.Storage;
 
 namespace GiacenzaCQRS.Core.Projections
 {
-    public class GiacenzaProjection
-    {
-        private readonly IDictionary<Guid, GiacenzaReadModel> _db;
 
-        public GiacenzaProjection(IDictionary<Guid, GiacenzaReadModel> db)
+    public class GiacenzaProjection : IGiacenzaProjection
+    {
+        private readonly IDocumentWriter<string, GiacenzaReadModel> _store;
+
+        public GiacenzaProjection(IDocumentWriter<string, GiacenzaReadModel> store)
         {
-            if(db == null) throw new ArgumentNullException("db");
-            _db = db;
+            if(store == null) throw new ArgumentNullException("store");
+            _store = store;
         }
 
         public void When(GiacenzaCreated e)
         {
             if(e == null) throw new ArgumentNullException("e");
-
-            GiacenzaReadModel read = new GiacenzaReadModel
+            GiacenzaReadModel giacenza = _store.AddOrUpdate(e.Minsan, () => new GiacenzaReadModel
                 {
                     Id = e.Id,
                     Minsan = e.Minsan,
                     Quantita = 0,
-                };
-            _db.Add(read.Id, read);
+                }, model => model);
         }
 
         public void When(GiacenzaCaricata e)
         {
             if (e == null) throw new ArgumentNullException("e");
-                var read = _db[e.Id];
-                read.Quantita += e.Quantita;
+            GiacenzaReadModel giacenza = _store.AddOrUpdate(e.Minsan, () => new GiacenzaReadModel(), a =>
+                {
+                    a.Quantita += e.Quantita;
+                    return a;
+                });
         }
 
         public void When(GiacenzaScaricata e)
         {
             if (e == null) throw new ArgumentNullException("e");
-                var read = _db[e.Id];
-                read.Quantita -= e.Quantita;
+            GiacenzaReadModel giacenza = _store.AddOrUpdate(e.Minsan, () => new GiacenzaReadModel(), a =>
+            {
+                a.Quantita -= e.Quantita;
+                return a;
+            });
         }
+
     }
 }

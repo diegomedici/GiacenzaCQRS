@@ -12,6 +12,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{8CAC3A
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Giacenza.TestClient", "Giacenza.TestClient\Giacenza.TestClient.csproj", "{CE049621-B69C-495A-B86D-3D9F68F17026}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiacenzaCQRS.Infrastructure", "GiacenzaCQRS.Infrastructure\GiacenzaCQRS.Infrastructure.csproj", "{92B78BEC-1174-4FA6-9D73-73B1D3A78C38}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +30,14 @@ Global
 		{3ACF257F-E3FD-4965-A1BD-1BE1626F216D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3ACF257F-E3FD-4965-A1BD-1BE1626F216D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3ACF257F-E3FD-4965-A1BD-1BE1626F216D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE049621-B69C-495A-B86D-3D9F68F17026}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE049621-B69C-495A-B86D-3D9F68F17026}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE049621-B69C-495A-B86D-3D9F68F17026}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE049621-B69C-495A-B86D-3D9F68F17026}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92B78BEC-1174-4FA6-9D73-73B1D3A78C38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92B78BEC-1174-4FA6-9D73-73B1D3A78C38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92B78BEC-1174-4FA6-9D73-73B1D3A78C38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92B78BEC-1174-4FA6-9D73-73B1D3A78C38}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -62,6 +62,7 @@
     <Compile Include="Events\GiacenzaCaricata.cs" />
     <Compile Include="Events\GiacenzaCreated.cs" />
     <Compile Include="Events\GiacenzaScaricata.cs" />
+    <Compile Include="Events\IGiacenzaProjectionV2.cs" />
     <Compile Include="Events\IMessage.cs" />
     <Compile Include="Events\IGiacenzaProjection.cs" />
     <Compile Include="Projections\GiacenzaProjection.cs" />

@@ -25,5 +25,10 @@ namespace GiacenzaCQRS.Core.Events
         {
             view.When(this);
         }
+
+        public void ProcessV2<TView2>(TView2 view) where TView2 : IGiacenzaProjectionV2
+        {
+            view.Carica(Minsan, Quantita);
+        }
     }
 }

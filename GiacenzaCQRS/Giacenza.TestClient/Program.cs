@@ -20,10 +20,14 @@ namespace Giacenza.TestClient
         {
             EventStoreConnection connection = EventStoreConnection.Create();
             connection.Connect(IntegrationTestTcpEndPoint);
-            var eventSincProjectionMaker = new EventSincProjectionMaker(connection,
-                                                                        new GiacenzaProjection(
-                                                                            new FileDocumentReaderWriter
-                                                                                <string, GiacenzaReadModel>("c:\\Pippo", new DocumentStrategy())));
+            //var eventSincProjectionMaker = new EventSincProjectionMaker(connection,
+            //                                                            new GiacenzaProjection(
+            //                                                                new FileDocumentReaderWriter
+            //                                                                    <string, GiacenzaReadModel>("c:\\Pippo", new DocumentStrategy())));
+
+            string connString = @"Data Source=TIMIDO;Initial Catalog=GIACENZE-CQRS;User ID=sa;Password=sensazioniforti";
+            var eventSincProjectionMaker = new EventSincProjectionMaker(connection, new GiacenzaProjectionV2(connString));
+
             eventSincProjectionMaker.GoLive();
             Console.ReadLine();
         }

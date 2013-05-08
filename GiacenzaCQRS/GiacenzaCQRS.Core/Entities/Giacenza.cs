@@ -8,6 +8,7 @@ namespace GiacenzaCQRS.Core.Entities
     public class Giacenza : AggregateBase
     {
         protected string Minsan { get; private set; }
+        protected int Quantita { get; private set; }
 
         public Giacenza(string minsan, IRouteEvents routeEvents) : base(routeEvents)
         {
@@ -33,6 +34,13 @@ namespace GiacenzaCQRS.Core.Entities
                 Id = e.Id;
                 Minsan = e.Minsan;
             });
+
+            Register<GiacenzaCaricata>(e => Quantita += e.Quantita);
+        }
+
+        public void Carica(int quantitaCaricata)
+        {
+            RaiseEvent(new GiacenzaCaricata(Minsan, quantitaCaricata));
         }
         
 

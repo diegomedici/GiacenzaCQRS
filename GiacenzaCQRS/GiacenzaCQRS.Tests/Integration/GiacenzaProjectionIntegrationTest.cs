@@ -6,7 +6,7 @@ using GiacenzaCQRS.Core.ReadModels;
 using GiacenzaCQRS.Core.Storage;
 using NUnit.Framework;
 
-namespace GiacenzaCQRS.Core.Entities
+namespace GiacenzaCQRS.Tests.Integration
 {
     [TestFixture]
     public class GiacenzaProjectionIntegrationTest
@@ -26,7 +26,7 @@ namespace GiacenzaCQRS.Core.Entities
             Assert.AreEqual("123456789", read.Minsan);
             Assert.AreEqual(0, read.Quantita);
 
-            giacenzaProjection.When(new GiacenzaCaricata(minsan, 100));
+            //giacenzaProjection.When(new GiacenzaUpdated(minsan, 100, 2));
 
             fileDocument.TryGet(minsan, out read);
 
@@ -35,7 +35,7 @@ namespace GiacenzaCQRS.Core.Entities
             Assert.AreEqual(100, read.Quantita);
 
 
-            giacenzaProjection.When(new GiacenzaScaricata(minsan, 10));
+            //giacenzaProjection.When(new GiacenzaUpdated(minsan, 10, 3));
 
             fileDocument.TryGet(minsan, out read);
 

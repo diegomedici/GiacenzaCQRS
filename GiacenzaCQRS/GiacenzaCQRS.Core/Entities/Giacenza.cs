@@ -35,12 +35,19 @@ namespace GiacenzaCQRS.Core.Entities
                 Minsan = e.Minsan;
             });
 
-            Register<GiacenzaCaricata>(e => Quantita += e.Quantita);
+            Register<GiacenzaUpdated>(e => Quantita = e.NuovaGiacenza);
         }
 
         public void Carica(int quantitaCaricata)
         {
-            RaiseEvent(new GiacenzaCaricata(Minsan, quantitaCaricata));
+            var nuovaGiacenza = Quantita + quantitaCaricata;
+            RaiseEvent(new GiacenzaUpdated(Minsan, Id, nuovaGiacenza));
+        }
+
+        public void Scarica(int quantitaScaricata)
+        {
+            var nuovaGiacenza = Quantita - quantitaScaricata;
+            RaiseEvent(new GiacenzaUpdated(Minsan, Id, nuovaGiacenza));
         }
         
 

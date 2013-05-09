@@ -5,6 +5,7 @@ namespace GiacenzaCQRS.Core.Events
     [Serializable]
     public class GiacenzaCaricata : IMessage
     {
+        
         public int Quantita { get; private set; }
         public Guid Id { get; private set; }
 
@@ -12,6 +13,7 @@ namespace GiacenzaCQRS.Core.Events
 
         public GiacenzaCaricata(string minsan, int quantita)
         {
+            
             Minsan = minsan;
             Quantita = quantita;
         }
@@ -26,9 +28,9 @@ namespace GiacenzaCQRS.Core.Events
             view.When(this);
         }
 
-        public void ProcessV2<TView2>(TView2 view) where TView2 : IGiacenzaProjectionV2
+        public void ProcessV2<TView2>(TView2 view, int version) where TView2 : IGiacenzaProjectionV2
         {
-            view.Carica(Minsan, Quantita);
+            view.Carica(Minsan, Quantita, version);
         }
     }
 }

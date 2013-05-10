@@ -1,10 +1,11 @@
 using System;
 using CommonDomain;
 using CommonDomain.Persistence;
+using GiacenzaCQRS.Core.Entities;
 using GiacenzaCQRS.Core.Repositories;
 using NUnit.Framework;
 
-namespace GiacenzaCQRS.Core.Entities
+namespace GiacenzaCQRS.Tests.Integration
 {
     [TestFixture]
     public class GiacenzaRepositoryTests

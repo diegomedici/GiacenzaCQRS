@@ -89,12 +89,8 @@ namespace GiacenzaCQRS.Core.Events
                 {
                     var view = session.Load<GiacenzaView>(minsan);
                     view.Quantita = quantita;
-                    session.Store(
-                        new StreamPosition
-                        {
-                            Id = originalStreamId,
-                            Position = versione
-                        });
+                    var stream = session.Load<StreamPosition>(originalStreamId);
+                    stream.Position = versione;
                     session.SaveChanges();
                 }
             }

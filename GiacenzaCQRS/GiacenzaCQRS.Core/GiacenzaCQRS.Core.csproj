@@ -63,11 +63,14 @@
   <ItemGroup>
     <Compile Include="Entities\Giacenza.cs" />
     <Compile Include="Entities\GiacenzaView.cs" />
+    <Compile Include="Entities\GlobalStreamPosition.cs" />
     <Compile Include="Entities\StreamPosition.cs" />
     <Compile Include="Events\GiacenzaCreated.cs" />
     <Compile Include="Events\GiacenzaProjectionV2.cs" />
+    <Compile Include="Events\GiacenzaProjectionV3.cs" />
     <Compile Include="Events\GiacenzaUpdated.cs" />
     <Compile Include="Events\IGiacenzaProjectionV2.cs" />
+    <Compile Include="Events\IGiacenzaProjectionV3.cs" />
     <Compile Include="Events\IMessage.cs" />
     <Compile Include="Events\IGiacenzaProjection.cs" />
     <Compile Include="Events\RavendDbProjection.cs" />

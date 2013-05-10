@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.Serialization;
+using EventStore.ClientAPI;
 
 namespace GiacenzaCQRS.Core.Events
 {
@@ -29,6 +30,11 @@ namespace GiacenzaCQRS.Core.Events
         public void ProcessV2<TView2>(TView2 view, int version, string originalStreamId) where TView2 : IGiacenzaProjectionV2
         {
             view.Aggiorna(Minsan, NuovaGiacenza, version, originalStreamId);
+        }
+
+        public void ProcessV3<TView3>(TView3 view, Position position) where TView3 : IGiacenzaProjectionV3
+        {
+            view.Aggiorna(Minsan, NuovaGiacenza, position);
         }
     }
 }

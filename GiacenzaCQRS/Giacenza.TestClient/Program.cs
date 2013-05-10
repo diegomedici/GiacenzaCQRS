@@ -23,7 +23,7 @@ namespace Giacenza.TestClient
             string ravendDbConnString = @"http://aleb-sfbs:8080";
             
 
-            var eventSincProjectionMaker = new EventSinkProjectionMaker(connection, new RavendDbProjection(ravendDbConnString));
+            var eventSincProjectionMaker = new EventSinkProjectionMaker(connection, new GiacenzaProjectionV3(ravendDbConnString));
 
             eventSincProjectionMaker.GoLive();
             Console.ReadLine();

@@ -9,6 +9,7 @@ namespace Giacenza.TestClient
         private readonly EventStoreConnection _connection;
         private readonly IGiacenzaProjection _view;
         private readonly IGiacenzaProjectionV2 _view2;
+        private readonly IGiacenzaProjectionV3 _view3;
 
         public EventSinkProjectionMaker(EventStoreConnection connection, IGiacenzaProjection view)
         {
@@ -28,10 +29,19 @@ namespace Giacenza.TestClient
             _view2 = view;
         }
 
+        public EventSinkProjectionMaker(EventStoreConnection connection, IGiacenzaProjectionV3 view)
+        {
+            if (connection == null) throw new ArgumentNullException("connection");
+            if (view == null) throw new ArgumentNullException("view");
+
+            _connection = connection;
+            _view3 = view;
+        }
+
         public void GoLive()
         {
-            var posizione = Position.Start;
-            _connection.SubscribeToAllFrom(posizione, true, DispatchToHandler);
+
+            _connection.SubscribeToAllFrom(_view3.GlobalPosition, true, DispatchToHandler);
 
         }
 
@@ -42,7 +52,9 @@ namespace Giacenza.TestClient
             if (e != null)
             {
                 //e.Process(_view);                
-                e.ProcessV2(_view2, resolvedEvent.OriginalEventNumber, resolvedEvent.OriginalStreamId);
+                //e.ProcessV2(_view2, resolvedEvent.OriginalEventNumber, resolvedEvent.OriginalStreamId);                
+                e.ProcessV3(_view3, resolvedEvent.OriginalPosition ?? Position.Start);
+
             }
 
 

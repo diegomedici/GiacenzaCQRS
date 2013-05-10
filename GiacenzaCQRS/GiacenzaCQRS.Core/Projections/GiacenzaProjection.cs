@@ -28,25 +28,9 @@ namespace GiacenzaCQRS.Core.Projections
                 }, model => model);
         }
 
-        public void When(GiacenzaCaricata e)
+        public void When(GiacenzaUpdated e)
         {
-            if (e == null) throw new ArgumentNullException("e");
-            GiacenzaReadModel giacenza = _store.AddOrUpdate(e.Minsan, () => new GiacenzaReadModel(), a =>
-                {
-                    a.Quantita += e.Quantita;
-                    return a;
-                });
+            throw new NotImplementedException();
         }
-
-        public void When(GiacenzaScaricata e)
-        {
-            if (e == null) throw new ArgumentNullException("e");
-            GiacenzaReadModel giacenza = _store.AddOrUpdate(e.Minsan, () => new GiacenzaReadModel(), a =>
-            {
-                a.Quantita -= e.Quantita;
-                return a;
-            });
-        }
-
     }
 }

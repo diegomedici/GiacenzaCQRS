@@ -7,13 +7,18 @@ namespace GiacenzaCQRS.Core.Events
     [DataContract]
     public class GiacenzaCreated : IMessage
     {
+        
+
         [DataMember]
         public string Minsan { get; private set; }
         [DataMember]
         public Guid Id { get; private set; }
 
+        
+
         public GiacenzaCreated(string minsan, Guid id)
         {
+            
             Minsan = minsan;
             Id = id;
         }
@@ -23,9 +28,9 @@ namespace GiacenzaCQRS.Core.Events
             view.When(this);
         }
 
-        public void ProcessV2<TView2>(TView2 view) where TView2 : IGiacenzaProjectionV2
+        public void ProcessV2<TView2>(TView2 view, int version, string originalStreamId) where TView2 : IGiacenzaProjectionV2
         {
-            view.Create(Id, Minsan);
+            view.Create(Id, Minsan, version, originalStreamId);
         }
     }
 }

@@ -91,8 +91,10 @@ namespace GiacenzaCQRS.Core.Repositories
 
             var streamName = _aggregateIdToStreamName(aggregate.GetType(), aggregate.Id);
             var newEvents = aggregate.GetUncommittedEvents().Cast<object>().ToList();
+            var originalVersion = aggregate.Version - newEvents.Count;
+            var expectedVersion = originalVersion == 0 ? ExpectedVersion.NoStream : originalVersion;
             var eventsToSave = newEvents.Select(e => ToEventData(Guid.NewGuid(), e, commitHeaders)).ToList();
-            _connection.AppendToStream(streamName, ExpectedVersion.NoStream, eventsToSave);
+            _connection.AppendToStream(streamName, expectedVersion, eventsToSave);
             aggregate.ClearUncommittedEvents();
         }
 

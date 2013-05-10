@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Text;
 using EventStore.ClientAPI;
 using GiacenzaCQRS.Core.Events;
-using GiacenzaCQRS.Core.Projections;
-using GiacenzaCQRS.Core.ReadModels;
-using GiacenzaCQRS.Core.Storage;
 
 namespace Giacenza.TestClient
 {
@@ -26,7 +20,10 @@ namespace Giacenza.TestClient
             //                                                                    <string, GiacenzaReadModel>("c:\\Pippo", new DocumentStrategy())));
 
             string connString = @"Data Source=TIMIDO;Initial Catalog=GIACENZE-CQRS;User ID=sa;Password=sensazioniforti";
-            var eventSincProjectionMaker = new EventSinkProjectionMaker(connection, new GiacenzaProjectionV2(connString));
+            string ravendDbConnString = @"http://aleb-sfbs:8080";
+            
+
+            var eventSincProjectionMaker = new EventSinkProjectionMaker(connection, new RavendDbProjection(ravendDbConnString));
 
             eventSincProjectionMaker.GoLive();
             Console.ReadLine();

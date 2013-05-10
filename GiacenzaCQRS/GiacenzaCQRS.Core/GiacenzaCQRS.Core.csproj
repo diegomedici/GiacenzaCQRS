@@ -47,6 +47,9 @@
     <Reference Include="protobuf-net">
       <HintPath>..\packages\protobuf-net.2.0.0.621\lib\net40\protobuf-net.dll</HintPath>
     </Reference>
+    <Reference Include="Raven.Client.Lightweight">
+      <HintPath>..\packages\RavenDB.Client.2.0.2360\lib\net40\Raven.Client.Lightweight.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
@@ -59,11 +62,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Giacenza.cs" />
+    <Compile Include="Entities\GiacenzaView.cs" />
+    <Compile Include="Entities\StreamPosition.cs" />
     <Compile Include="Events\GiacenzaCreated.cs" />
+    <Compile Include="Events\GiacenzaProjectionV2.cs" />
     <Compile Include="Events\GiacenzaUpdated.cs" />
     <Compile Include="Events\IGiacenzaProjectionV2.cs" />
     <Compile Include="Events\IMessage.cs" />
     <Compile Include="Events\IGiacenzaProjection.cs" />
+    <Compile Include="Events\RavendDbProjection.cs" />
     <Compile Include="Projections\GiacenzaProjection.cs" />
     <Compile Include="ReadModels\GiacenzaReadModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

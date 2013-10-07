@@ -30,7 +30,8 @@ namespace GiacenzaCQRS.Core.Projections
 
         public void When(GiacenzaUpdated e)
         {
-            throw new NotImplementedException();
+            if (e == null) throw new ArgumentNullException("e");
+            //GiacenzaReadModel giacenza = _store.AddOrUpdate(e.)
         }
     }
 }

@@ -35,6 +35,10 @@
     <Reference Include="CommonDomain">
       <HintPath>..\packages\CommonDomain.1.4.0\lib\net40\CommonDomain.dll</HintPath>
     </Reference>
+    <Reference Include="EventStore.ClientAPI, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\GiacenzaCQRS.Core\bin\Debug\EventStore.ClientAPI.dll</HintPath>
+    </Reference>
     <Reference Include="Moq">
       <HintPath>..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
     </Reference>

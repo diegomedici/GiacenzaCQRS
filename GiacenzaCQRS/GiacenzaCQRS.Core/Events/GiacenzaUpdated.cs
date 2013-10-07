@@ -16,11 +16,11 @@ namespace GiacenzaCQRS.Core.Events
         }
 
         [DataMember]
-        protected Guid Id { get; set; }
+        public Guid Id { get; private set; }
         [DataMember]
-        public int NuovaGiacenza { get; set; }
+        public int NuovaGiacenza { get; private set; }
         [DataMember]
-        private string Minsan { get; set; }
+        public string Minsan { get; private set; }
 
         public void Process<TView>(TView view) where TView : IGiacenzaProjection
         {

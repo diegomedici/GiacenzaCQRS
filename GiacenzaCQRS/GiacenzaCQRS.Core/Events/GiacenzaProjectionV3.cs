@@ -12,6 +12,9 @@ namespace GiacenzaCQRS.Core.Events
         {
             get { return new Position(_globalStreamPosition.CommmitPosition, _globalStreamPosition.PreparePosition); }
         }
+
+     
+
         private readonly DocumentStore _documentStore;
 
 
@@ -48,6 +51,14 @@ namespace GiacenzaCQRS.Core.Events
                 _globalStreamPosition.PreparePosition = position.PreparePosition;
                 session.Store(_globalStreamPosition);
                 session.SaveChanges();
+            }
+        }
+
+        public GiacenzaView Read(string minsan)
+        {
+            using (var session = _documentStore.OpenSession())
+            {
+                return session.Load<GiacenzaView>(minsan);
             }
         }
 

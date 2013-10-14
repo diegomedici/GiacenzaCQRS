@@ -6,12 +6,12 @@ namespace Giacenza.TestClient
 {
     public class EventSinkProjectionMaker
     {
-        private readonly EventStoreConnection _connection;
+        private readonly IEventStoreConnection _connection;
         private readonly IGiacenzaProjection _view;
         private readonly IGiacenzaProjectionV2 _view2;
         private readonly IGiacenzaProjectionV3 _view3;
 
-        public EventSinkProjectionMaker(EventStoreConnection connection, IGiacenzaProjection view)
+        public EventSinkProjectionMaker(IEventStoreConnection connection, IGiacenzaProjection view)
         {
             if (connection == null) throw new ArgumentNullException("connection");
             if (view == null) throw new ArgumentNullException("view");
@@ -20,7 +20,7 @@ namespace Giacenza.TestClient
             _view = view;
         }
 
-        public EventSinkProjectionMaker(EventStoreConnection connection, IGiacenzaProjectionV2 view)
+        public EventSinkProjectionMaker(IEventStoreConnection connection, IGiacenzaProjectionV2 view)
         {
             if (connection == null) throw new ArgumentNullException("connection");
             if (view == null) throw new ArgumentNullException("view");
@@ -29,7 +29,7 @@ namespace Giacenza.TestClient
             _view2 = view;
         }
 
-        public EventSinkProjectionMaker(EventStoreConnection connection, IGiacenzaProjectionV3 view)
+        public EventSinkProjectionMaker(IEventStoreConnection connection, IGiacenzaProjectionV3 view)
         {
             if (connection == null) throw new ArgumentNullException("connection");
             if (view == null) throw new ArgumentNullException("view");

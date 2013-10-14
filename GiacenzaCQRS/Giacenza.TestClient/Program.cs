@@ -12,8 +12,8 @@ namespace Giacenza.TestClient
 
         static void Main(string[] args)
         {
-            EventStoreConnection connection = EventStoreConnection.Create();
-            connection.Connect(IntegrationTestTcpEndPoint);
+            IEventStoreConnection connection = EventStoreConnection.Create(IntegrationTestTcpEndPoint);
+            connection.Connect();
             //var eventSincProjectionMaker = new EventSincProjectionMaker(connection,
             //                                                            new GiacenzaProjection(
             //                                                                new FileDocumentReaderWriter

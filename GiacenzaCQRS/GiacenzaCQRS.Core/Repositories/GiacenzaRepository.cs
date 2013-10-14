@@ -13,7 +13,7 @@ namespace GiacenzaCQRS.Core.Repositories
 {
     public class GiacenzaRepository : IRepository, IDisposable
     {
-
+        IEventStoreConnection _connection;
         private const string EventClrTypeHeader = "EventClrTypeName";
         private const string AggregateClrTypeHeader = "AggregateClrTypeName";
         private const string CommitIdHeader = "CommitId";
@@ -24,9 +24,9 @@ namespace GiacenzaCQRS.Core.Repositories
             = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.None };
 
         public GiacenzaRepository()
-        {
-            _connection = EventStoreConnection.Create();
-            _connection.Connect(IntegrationTestTcpEndPoint);
+        {            
+            _connection = EventStoreConnection.Create(IntegrationTestTcpEndPoint);
+            _connection.Connect();
 
         }
 
@@ -48,7 +48,7 @@ namespace GiacenzaCQRS.Core.Repositories
 
         private static readonly IPEndPoint IntegrationTestTcpEndPoint = new IPEndPoint(IPAddress.Loopback, 1113);
 
-        private readonly EventStoreConnection _connection;
+        
 
         private static TAggregate ConstructAggregate<TAggregate>()
         {
